@@ -52,3 +52,9 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Org Settings
+;;
+;; Here all of the settings for the Org package and it's modules are stored and
+;; referenced.
+(setq org-roam-directory "~/personal/brain")
