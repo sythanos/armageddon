@@ -72,3 +72,7 @@
     (interactive)
     (org-roam-server-mode 1)
     (browse-url-xdg-open (format "http://localhost:%d" org-roam-server-port))))
+
+(package! emacs-bazel-mode
+  :recipe (:host github :repo "bazelbuild/emacs-bazel-mode")
+  :pin "2cf143b")
