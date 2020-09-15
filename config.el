@@ -58,3 +58,8 @@
 ;; Here all of the settings for the Org package and it's modules are stored and
 ;; referenced.
 (setq org-roam-directory "~/personal/brain")
+
+(setq reftex-default-bibliography '("~/personal/brain/PersonalLibrary.bib"))
+(setq org-ref-bibliography-notes "~/personal/brain/index.org"
+      org-ref-default-bibliography '("~/personal/brain/PersonalLibrary.bib")
+      org-ref-pdf-directory "~/personal/brain/sources/")

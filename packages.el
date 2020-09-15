@@ -49,7 +49,9 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-
+;; Org Custom Packages
+;;
+;;
 (package! org-roam-server :pin "7af07")
 
 (use-package org-roam-server
@@ -73,6 +75,19 @@
     (org-roam-server-mode 1)
     (browse-url-xdg-open (format "http://localhost:%d" org-roam-server-port))))
 
+(package! org-ref
+  :recipe (:host github :repo "jkitchin/org-ref"))
+
+;; Install of org-roam-bibtex acording to https://github.com/org-roam/org-roam-bibtex#doom-emacs
+(package! org-roam-bibtex
+  :recipe (:host github :repo "org-roam/org-roam-bibtex"))
+
+;; Since I am using org-roam via the `+roam` flag
+(unpin! org-roam company-org-roam)
+
+;; Other Packages
+;;
+;;
 (package! emacs-bazel-mode
   :recipe (:host github :repo "bazelbuild/emacs-bazel-mode")
   :pin "2cf143b")
