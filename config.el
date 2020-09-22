@@ -60,9 +60,14 @@
 (after! org
   (custom-set-faces!
     '(org-document-title :height 1.4)))
+
+;; Org - Roam Configs
 (setq org-roam-directory "~/personal/brain")
 
-(setq reftex-default-bibliography '("~/personal/brain/PersonalLibrary.bib"))
-(setq org-ref-bibliography-notes "~/personal/brain/index.org"
-      org-ref-default-bibliography '("~/personal/brain/PersonalLibrary.bib")
-      org-ref-pdf-directory "~/personal/brain/sources/")
+;; Org - Noter Configs
+(setq org-noter-notes-search-path '("~/personal/brain/literature"))
+
+;; Org - Ref Configs
+(setq reftex-default-bibliography '("~/personal/library/library.bib"))
+(setq org-ref-default-bibliography '("~/personal/library/library.bib")
+      org-ref-pdf-directory "~/personal/library/")
