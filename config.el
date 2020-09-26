@@ -61,6 +61,19 @@
   (custom-set-faces!
     '(org-document-title :height 1.4)))
 
+(setq org-attach-id-dir "~/personal/brain/attachments")
+(setq org-startup-with-inline-images t)
+
+(use-package org-download
+  :after org
+  :defer nil
+  :custom
+  (org-download-method 'directory)
+  (org-download-imge-dir "~/personal/brain/attachments")
+  (org-download-screenshot-method "fireshot gui --raw > %s")
+  :config
+  (require 'org-download))
+
 ;; Org - Roam Configs
 (setq org-roam-directory "~/personal/brain")
 
