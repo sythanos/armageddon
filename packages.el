@@ -54,35 +54,12 @@
 ;;
 (package! org-roam-server :pin "7af07")
 
-(use-package org-roam-server
-  :after org-roam
-  :config
-  (setq org-roam-server-host "127.0.0.1"
-        org-roam-server-port 8080
-        org-roam-server-export-inline-images t
-        org-roam-server-authenticate nil
-        org-roam-server-export-inline-images t
-        org-roam-server-serve-files nil
-        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
-        org-roam-server-network-poll t
-        org-roam-server-network-arrows nil
-        org-roam-server-label-truncate t
-        org-roam-server-label-truncate-length 60
-        org-roam-server-label-wrap-length 20)
-  (defun org-roam-server-open ()
-    "Ensure the server is active, then open the roam graph."
-    (interactive)
-    (org-roam-server-mode 1)
-    (browse-url-xdg-open (format "http://localhost:%d" org-roam-server-port))))
-
 (package! org-ref
   :recipe (:host github :repo "jkitchin/org-ref"))
 
 ;; Install of org-roam-bibtex acording to https://github.com/org-roam/org-roam-bibtex#doom-emacs
 (package! org-roam-bibtex
   :recipe (:host github :repo "org-roam/org-roam-bibtex"))
-
-;; Since I am using org-roam via the `+roam` flag
 (unpin! org-roam company-org-roam)
 
 ;; Other Packages
