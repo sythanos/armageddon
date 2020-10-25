@@ -10,6 +10,11 @@
   (custom-set-faces!
     '(org-document-title :height 1.4)))
 
+(after! org
+  (setq org-agenda-files '("~/OneDrive/Dokumenti/Brain/Tasks"))
+  (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "|" "DONE(d)" "CANCELLED(c)")))
+  )
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
@@ -48,7 +53,6 @@
 ;; Org Agenda Configs
 ;;
 ;; Org Agenda is used to track my items that needs to happen
-(setq org-agenda-files '("~/OneDrive/Dokumenti/Brain/Tasks"))
 
 ;; Org - Roam Configs
 (setq org-roam-directory "~/OneDrive/Dokumenti/Brain")

@@ -3,8 +3,8 @@
 #+STARTUP: inlineimages nofold
 #+PROPERTY: header-args :tangle config.el
 
-* Doom Emacs Config
-** My Personal Details
+* MY DOOM EMACS CONFIG 
+** PERSONAL DETAILS
 Some functionality uses this to identify you, e.g. GPG configuration, email
 clients, file templates and snippets.
 
@@ -13,7 +13,7 @@ clients, file templates and snippets.
       user-mail-address "urban.avsec@outlook.com")
 #+END_SRC
 
-** Theme and Visuals
+** DOOM THEME
  Doom exposes five (optional) variables for controlling fonts in Doom. Here
  are the three important ones:
  + `doom-font'
@@ -24,33 +24,30 @@ clients, file templates and snippets.
 (setq doom-theme 'doom-laserwave)
 #+END_SRC
 
-** Package Configurations
-This section includes the configurations of all packages used by my Doom Emacs. Some packages are grouped together into /Package Environments/ such as =Org= packages. 
+** ORG MODE
+Org Mode Configurations
 
-*** Org Package Environment Configuration
-=Org= packages environemnt consists of all packages that enable my =Org= Workflow.
-
-**** Core Org Configs
-
-***** Before Org Loads
-=org-directory= points to the default location of new org files.
-It must be set before org loads!
-
+Make my default =org-directory= equal to the /Brain/ folder in my cloud for cross device support. This must eval before /org/ loads. 
 #+BEGIN_SRC emacs-lisp
 (setq org-directory "~/org/")
 #+END_SRC
 
-***** After Org Loads
-The following config is ran after the /org/ packages loads.
-
-+ =org-startup-with-images=  If set to true the attached images are shown at the startup time
-+ =org-document-title=       Sytle customizations for the title of org pages
-  
+The title in my config should be 40% slightly larger and inline images should always load. 
 #+BEGIN_SRC emacs-lisp
 (after! org
   (setq org-startup-with-inline-images t)
   (custom-set-faces!
     '(org-document-title :height 1.4)))
+#+END_SRC
+
+Set =org-agenda-files= variable to my /Tasks/ folder inside the /Brain/ folder, where all my Org pages with TODO's might exist. Also add new types of TODO states:
++ =MEETING= A scheduled meeting
++ =BLOCKED= An external block
+#+BEGIN_SRC emacs-lisp
+(after! org
+  (setq org-agenda-files '("~/OneDrive/Dokumenti/Brain/Tasks"))
+  (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "|" "DONE(d)" "CANCELLED(c)")))
+  )
 #+END_SRC
 
 
@@ -96,7 +93,6 @@ The following config is ran after the /org/ packages loads.
 ;; Org Agenda Configs
 ;;
 ;; Org Agenda is used to track my items that needs to happen
-(setq org-agenda-files '("~/OneDrive/Dokumenti/Brain/Tasks"))
 
 ;; Org - Roam Configs
 (setq org-roam-directory "~/OneDrive/Dokumenti/Brain")
