@@ -61,7 +61,7 @@
   (custom-set-faces!
     '(org-document-title :height 1.4)))
 
-(setq org-attach-id-dir "~/personal/brain/attachments")
+(setq org-attach-id-dir "~/OneDrive/Dokumenti/Brain/Attachments")
 (setq org-startup-with-inline-images t)
 
 (use-package org-download
@@ -69,13 +69,20 @@
   :defer nil
   :custom
   (org-download-method 'directory)
-  (org-download-imge-dir "~/personal/brain/attachments")
+  (org-download-imge-dir "~/OneDrive/Dokumenti/Brain/Attachments")
   (org-download-screenshot-method "fireshot gui --raw > %s")
   :config
   (require 'org-download))
 
+;; Org Agenda Configs
+;;
+;; Org Agenda is used to track my items that needs to happen
+(setq org-agenda-files '("~/OneDrive/Dokumenti/Brain/Tasks"))
+
 ;; Org - Roam Configs
-(setq org-roam-directory "~/personal/brain")
+(setq org-roam-directory "~/OneDrive/Dokumenti/Brain")
+(setq org-roam-db-locaiton "~/org-roam.db")
+(setq org-roam-tag-sources '(prop first-directory))
 
 ;; Org Roam Bibtex Settings
 (use-package org-roam-bibtex
@@ -107,9 +114,9 @@
 
 
 ;; Org - Noter Configs
-(setq org-noter-notes-search-path '("~/personal/brain/literature"))
+(setq org-noter-notes-search-path '("~/OneDrive/Dokumenti/Library"))
 
 ;; Org - Ref Configs
-(setq reftex-default-bibliography '("~/personal/library/library.bib"))
-(setq org-ref-default-bibliography '("~/personal/library/library.bib")
-      org-ref-pdf-directory "~/personal/library/")
+(setq reftex-default-bibliography '("~/OneDrive/Dokumenti/Library/Library.bib"))
+(setq org-ref-default-bibliography '("~/OneDrive/Dokumenti/Library/Library.bib")
+      org-ref-pdf-directory "~/OneDrive/Dokumenti/Library/")
