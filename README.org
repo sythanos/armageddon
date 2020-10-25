@@ -1,15 +1,63 @@
+#+TITLE:   Armagedon Config
+#+DATE:    October 25, 2020
+#+STARTUP: inlineimages nofold
+#+PROPERTY: header-args :tangle config.el
+
+* Doom Emacs Config
+** My Personal Details
+Some functionality uses this to identify you, e.g. GPG configuration, email
+clients, file templates and snippets.
+
+#+BEGIN_SRC emacs-lisp
 (setq user-full-name "Urban Avsec"
       user-mail-address "urban.avsec@outlook.com")
+#+END_SRC
 
+** Theme and Visuals
+ Doom exposes five (optional) variables for controlling fonts in Doom. Here
+ are the three important ones:
+ + `doom-font'
+ + `doom-variable-pitch-font'
+ + `doom-big-font' -- used for `doom-big-font-mode'; use this for presentations or streaming.
+   
+#+BEGIN_SRC emacs-lisp
 (setq doom-theme 'doom-laserwave)
+#+END_SRC
 
+** Package Configurations
+This section includes the configurations of all packages used by my Doom Emacs. Some packages are grouped together into /Package Environments/ such as =Org= packages. 
+
+*** Org Package Environment Configuration
+=Org= packages environemnt consists of all packages that enable my =Org= Workflow.
+
+**** Core Org Configs
+
+***** Before Org Loads
+=org-directory= points to the default location of new org files.
+It must be set before org loads!
+
+#+BEGIN_SRC emacs-lisp
 (setq org-directory "~/org/")
+#+END_SRC
 
+***** After Org Loads
+The following config is ran after the /org/ packages loads.
+
++ =org-startup-with-images=  If set to true the attached images are shown at the startup time
++ =org-document-title=       Sytle customizations for the title of org pages
+  
+#+BEGIN_SRC emacs-lisp
 (after! org
   (setq org-startup-with-inline-images t)
   (custom-set-faces!
     '(org-document-title :height 1.4)))
+#+END_SRC
 
+
+
+
+** TEMP
+#+BEGIN_SRC emacs-lisp
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
@@ -91,3 +139,7 @@
 (setq reftex-default-bibliography '("~/OneDrive/Dokumenti/Library/Library.bib"))
 (setq org-ref-default-bibliography '("~/OneDrive/Dokumenti/Library/Library.bib")
       org-ref-pdf-directory "~/OneDrive/Dokumenti/Library/")
+#+END_SRC
+
+#+RESULTS:
+: ~/OneDrive/Dokumenti/Library/
