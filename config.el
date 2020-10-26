@@ -15,6 +15,23 @@
   (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "|" "DONE(d)" "CANCELLED(c)")))
   )
 
+(setq org-roam-directory "~/OneDrive/Dokumenti/Brain")
+(setq org-roam-db-locaiton "~/org-roam.db")
+(setq org-roam-tag-sources '(prop first-directory))
+
+(after! org
+  (setq org-roam-capture-templates
+        '(("T" "Task" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "Tasks/%<%Y%m%d%H%M%S>-${slug}"
+           :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n"
+           :unnarrowed t)
+          ("W" "Wiki" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "Wiki/%<%Y%m%d%H%M%S>-${slug}"
+           :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall"
+           :unnarrowed t))))
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
@@ -54,10 +71,6 @@
 ;;
 ;; Org Agenda is used to track my items that needs to happen
 
-;; Org - Roam Configs
-(setq org-roam-directory "~/OneDrive/Dokumenti/Brain")
-(setq org-roam-db-locaiton "~/org-roam.db")
-(setq org-roam-tag-sources '(prop first-directory))
 
 ;; Org Roam Bibtex Settings
 (use-package org-roam-bibtex

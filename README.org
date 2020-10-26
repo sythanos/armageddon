@@ -51,6 +51,36 @@ Set =org-agenda-files= variable to my /Tasks/ folder inside the /Brain/ folder, 
 #+END_SRC
 
 
+*** ORG ROAM
+=Org Roam= is used to control my digital brain. The brain is located in my OneDrive Folder, but the DB lives outside to allow sharing of the documents accross multiple devices. When switching =org-roam-build-cache= should be called to regenreate the Database.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-roam-directory "~/OneDrive/Dokumenti/Brain")
+(setq org-roam-db-locaiton "~/org-roam.db")
+(setq org-roam-tag-sources '(prop first-directory))
+#+END_SRC
+
+**** Roam Templates
+There are 3 Core Templates in my Roam:
++ =Task= Any Document living in the /Task/ directory, which is also tracked by =org-agenda=. TODO's , Projects, Meetings, etc. should go into this folder. 
++ =Wiki= The general Wiki Type Knowledge System. Files live under /Wiki/ directory. Any atoms of knowledge with their source can go in there. 
++ =Zettel= The classical implementation of /Zettelkaste/ method. The documents live under the /Zettel/ directory. This documents should represent pure zettels. That is pieces of my thinking and other people opinions with correct sources. 
+  
+#+BEGIN_SRC emacs-lisp
+(after! org
+  (setq org-roam-capture-templates
+        '(("T" "Task" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "Tasks/%<%Y%m%d%H%M%S>-${slug}"
+           :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n"
+           :unnarrowed t)
+          ("W" "Wiki" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "Wiki/%<%Y%m%d%H%M%S>-${slug}"
+           :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall"
+           :unnarrowed t))))
+#+END_SRC
+
 
 
 ** TEMP
@@ -94,10 +124,6 @@ Set =org-agenda-files= variable to my /Tasks/ folder inside the /Brain/ folder, 
 ;;
 ;; Org Agenda is used to track my items that needs to happen
 
-;; Org - Roam Configs
-(setq org-roam-directory "~/OneDrive/Dokumenti/Brain")
-(setq org-roam-db-locaiton "~/org-roam.db")
-(setq org-roam-tag-sources '(prop first-directory))
 
 ;; Org Roam Bibtex Settings
 (use-package org-roam-bibtex
