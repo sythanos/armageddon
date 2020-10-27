@@ -33,7 +33,12 @@
            :unnarrowed t)
           ("Z" "Zettel" plain (function org-roam--capture-get-point)
            "%?"
-           :file-name "Wiki/%<%Y%m%d%H%M%S>-${slug}"
+           :file-name "Zettel/%<%Y%m%d%H%M%S>-${slug}"
+           :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall"
+           :unnarrowed t)
+          ("L" "Literature" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "LiteratureNote/%<%Y%m%d%H%M%S>-${slug}"
            :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall"
            :unnarrowed t))))
 
