@@ -30,6 +30,11 @@
            "%?"
            :file-name "Wiki/%<%Y%m%d%H%M%S>-${slug}"
            :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall"
+           :unnarrowed t)
+          ("Z" "Zettel" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "Wiki/%<%Y%m%d%H%M%S>-${slug}"
+           :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall"
            :unnarrowed t))))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
