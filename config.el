@@ -3,6 +3,10 @@
 
 (setq doom-theme 'doom-dracula)
 
+(after! evil
+  (map! :n "j" 'evil-next-visual-line
+        :n "k" 'evil-previous-visual-line))
+
 (setq org-directory "~/org/")
 
 (after! org

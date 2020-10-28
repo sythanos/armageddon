@@ -24,6 +24,14 @@ clients, file templates and snippets.
 (setq doom-theme 'doom-dracula)
 #+END_SRC
 
+** SANE CURSOR MOVEMENT
+To enalbe to move in visual lines using `j` and `k` and not skip lines. 
+#+BEGIN_SRC emacs-lisp
+(after! evil
+  (map! :n "j" 'evil-next-visual-line
+        :n "k" 'evil-previous-visual-line))
+#+END_SRC
+
 ** ORG MODE
 Org Mode Configurations
 
