@@ -21,7 +21,7 @@ clients, file templates and snippets.
  + `doom-big-font' -- used for `doom-big-font-mode'; use this for presentations or streaming.
    
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-laserwave)
+(setq doom-theme 'doom-dracula)
 #+END_SRC
 
 ** ORG MODE
@@ -46,7 +46,7 @@ Set =org-agenda-files= variable to my /Tasks/ folder inside the /Brain/ folder, 
 #+BEGIN_SRC emacs-lisp
 (after! org
   (setq org-agenda-files '("~/OneDrive/Dokumenti/Brain/Tasks"))
-  (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "LEARN(l)" "DOING" "|" "DONE(d)" "CANCELLED(c)")))
   )
 #+END_SRC
 

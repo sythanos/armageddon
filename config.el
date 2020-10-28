@@ -1,7 +1,7 @@
 (setq user-full-name "Urban Avsec"
       user-mail-address "urban.avsec@outlook.com")
 
-(setq doom-theme 'doom-laserwave)
+(setq doom-theme 'doom-dracula)
 
 (setq org-directory "~/org/")
 
@@ -12,7 +12,7 @@
 
 (after! org
   (setq org-agenda-files '("~/OneDrive/Dokumenti/Brain/Tasks"))
-  (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "LEARN(l)" "DOING" "|" "DONE(d)" "CANCELLED(c)")))
   )
 
 (setq org-roam-directory "~/OneDrive/Dokumenti/Brain")
