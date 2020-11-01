@@ -7,7 +7,7 @@
   (map! :n "j" 'evil-next-visual-line
         :n "k" 'evil-previous-visual-line))
 
-(setq org-directory "~/org/")
+(setq org-directory "~/Dropbox/Brain")
 
 (after! org
   (setq org-startup-with-inline-images t)
@@ -15,11 +15,11 @@
     '(org-document-title :height 1.4)))
 
 (after! org
-  (setq org-agenda-files '("~/OneDrive/Dokumenti/Brain/Tasks"))
+  (setq org-agenda-files '("~/Dropbox/Brain/Tasks"))
   (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "LEARN(l)" "DOING" "|" "DONE(d)" "CANCELLED(c)")))
   )
 
-(setq org-roam-directory "~/OneDrive/Dokumenti/Brain")
+(setq org-roam-directory "~/Dropbox/Brain")
 (setq org-roam-db-locaiton "~/org-roam.db")
 (setq org-roam-tag-sources '(prop first-directory))
 
@@ -46,6 +46,23 @@
            :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall"
            :unnarrowed t))))
 
+(after! lsp-mode
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-tramp-connection "rust-analyzer")
+                    :major-modes '(rust-mode rustic-mode)
+                    :priority 1
+                    :initialization-options 'lsp-rust-analyzer--make-init-options
+                    :notification-handlers (ht<-alist lsp-rust-notification-handlers) //TODO Unknwon Constant
+                    :action-handlers (ht ("rust-analyzer.runSingle" #'lsp-rust--analyzer-run-single))
+                    :library-folders-fn(lambda (_workplace) lsp-rust-library-directions)
+                    :after-open-fn (lambda ()
+                                     (when lsp-rust-analyzer-server-display-hints
+                                       (lsp-rust-analyzer-inlay-hints-mode)))
+                    :ignore-messages nil
+                    :remote? t
+                    :custom-capabilities `((experimental . ((snippetTextEdit . ,lsp-enable-snipet ))))
+                    :server-id 'rust-analyzer-remote)))
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
@@ -69,14 +86,14 @@
 ;; they are implemented.
 
 ;; Org - Attach Settings
-(setq org-attach-id-dir "~/OneDrive/Dokumenti/Brain/Attachments")
+(setq org-attach-id-dir "~/Dropbox/Brain/Attachments")
 
 (use-package org-download
   :after org
   :defer nil
   :custom
   (org-download-method 'directory)
-  (org-download-imge-dir "~/OneDrive/Dokumenti/Brain/Attachments")
+  (org-download-imge-dir "~/Dropbox/Brain/Attachments")
   (org-download-screenshot-method "fireshot gui --raw > %s")
   :config
   (require 'org-download))

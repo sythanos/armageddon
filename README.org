@@ -13,6 +13,7 @@ clients, file templates and snippets.
       user-mail-address "urban.avsec@outlook.com")
 #+END_SRC
 
+
 ** DOOM THEME
  Doom exposes five (optional) variables for controlling fonts in Doom. Here
  are the three important ones:
@@ -24,6 +25,7 @@ clients, file templates and snippets.
 (setq doom-theme 'doom-dracula)
 #+END_SRC
 
+
 ** SANE CURSOR MOVEMENT
 To enalbe to move in visual lines using `j` and `k` and not skip lines. 
 #+BEGIN_SRC emacs-lisp
@@ -32,12 +34,13 @@ To enalbe to move in visual lines using `j` and `k` and not skip lines.
         :n "k" 'evil-previous-visual-line))
 #+END_SRC
 
+
 ** ORG MODE
 Org Mode Configurations
 
 Make my default =org-directory= equal to the /Brain/ folder in my cloud for cross device support. This must eval before /org/ loads. 
 #+BEGIN_SRC emacs-lisp
-(setq org-directory "~/org/")
+(setq org-directory "~/Dropbox/Brain")
 #+END_SRC
 
 The title in my config should be 40% slightly larger and inline images should always load. 
@@ -53,7 +56,7 @@ Set =org-agenda-files= variable to my /Tasks/ folder inside the /Brain/ folder, 
 + =BLOCKED= An external block
 #+BEGIN_SRC emacs-lisp
 (after! org
-  (setq org-agenda-files '("~/OneDrive/Dokumenti/Brain/Tasks"))
+  (setq org-agenda-files '("~/Dropbox/Brain/Tasks"))
   (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "LEARN(l)" "DOING" "|" "DONE(d)" "CANCELLED(c)")))
   )
 #+END_SRC
@@ -63,7 +66,7 @@ Set =org-agenda-files= variable to my /Tasks/ folder inside the /Brain/ folder, 
 =Org Roam= is used to control my digital brain. The brain is located in my OneDrive Folder, but the DB lives outside to allow sharing of the documents accross multiple devices. When switching =org-roam-build-cache= should be called to regenreate the Database.
 
 #+BEGIN_SRC emacs-lisp
-(setq org-roam-directory "~/OneDrive/Dokumenti/Brain")
+(setq org-roam-directory "~/Dropbox/Brain")
 (setq org-roam-db-locaiton "~/org-roam.db")
 (setq org-roam-tag-sources '(prop first-directory))
 #+END_SRC
@@ -99,6 +102,27 @@ There are 3 Core Templates in my Roam:
            :unnarrowed t))))
 #+END_SRC
 
+** LANG
+*** RUST
+Enables Rust over TRAMP
+#+BEGIN_SRC emacs-lisp
+(after! lsp-mode
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-tramp-connection "rust-analyzer")
+                    :major-modes '(rust-mode rustic-mode)
+                    :priority 1
+                    :initialization-options 'lsp-rust-analyzer--make-init-options
+                    :notification-handlers (ht<-alist lsp-rust-notification-handlers) //TODO Unknwon Constant
+                    :action-handlers (ht ("rust-analyzer.runSingle" #'lsp-rust--analyzer-run-single))
+                    :library-folders-fn(lambda (_workplace) lsp-rust-library-directions)
+                    :after-open-fn (lambda ()
+                                     (when lsp-rust-analyzer-server-display-hints
+                                       (lsp-rust-analyzer-inlay-hints-mode)))
+                    :ignore-messages nil
+                    :remote? t
+                    :custom-capabilities `((experimental . ((snippetTextEdit . ,lsp-enable-snipet ))))
+                    :server-id 'rust-analyzer-remote)))
+#+END_SRC
 
 
 ** TEMP
@@ -126,14 +150,14 @@ There are 3 Core Templates in my Roam:
 ;; they are implemented.
 
 ;; Org - Attach Settings
-(setq org-attach-id-dir "~/OneDrive/Dokumenti/Brain/Attachments")
+(setq org-attach-id-dir "~/Dropbox/Brain/Attachments")
 
 (use-package org-download
   :after org
   :defer nil
   :custom
   (org-download-method 'directory)
-  (org-download-imge-dir "~/OneDrive/Dokumenti/Brain/Attachments")
+  (org-download-imge-dir "~/Dropbox/Brain/Attachments")
   (org-download-screenshot-method "fireshot gui --raw > %s")
   :config
   (require 'org-download))
