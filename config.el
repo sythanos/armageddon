@@ -7,7 +7,7 @@
   (map! :n "j" 'evil-next-visual-line
         :n "k" 'evil-previous-visual-line))
 
-(setq org-directory "~/Dropbox/Brain")
+(setq org-directory "~/pCloud Drive/Crypto Folder/Brain")
 
 (after! org
   (setq org-startup-with-inline-images t)
@@ -15,11 +15,11 @@
     '(org-document-title :height 1.4)))
 
 (after! org
-  (setq org-agenda-files '("~/Dropbox/Brain/Tasks"))
+  (setq org-agenda-files '("~/pCloud Drive/Crypto Folder/Brain/Tasks"))
   (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "LEARN(l)" "DOING" "|" "DONE(d)" "CANCELLED(c)")))
   )
 
-(setq org-roam-directory "~/Dropbox/Brain")
+(setq org-roam-directory "~/pCloud Drive/Crypto Folder/Brain")
 (setq org-roam-db-locaiton "~/org-roam.db")
 (setq org-roam-tag-sources '(prop first-directory))
 
@@ -86,14 +86,14 @@
 ;; they are implemented.
 
 ;; Org - Attach Settings
-(setq org-attach-id-dir "~/Dropbox/Brain/Attachments")
+(setq org-attach-id-dir "~/pCloud Drive/Crypto Folder/Brain/Attachments")
 
 (use-package org-download
   :after org
   :defer nil
   :custom
   (org-download-method 'directory)
-  (org-download-imge-dir "~/Dropbox/Brain/Attachments")
+  (org-download-imge-dir "~/pCloud Drive/Crypto Fodler/Brain/Attachments")
   (org-download-screenshot-method "fireshot gui --raw > %s")
   :config
   (require 'org-download))
@@ -133,9 +133,9 @@
 
 
 ;; Org - Noter Configs
-(setq org-noter-notes-search-path '("~/OneDrive/Dokumenti/Library"))
+(setq org-noter-notes-search-path '("~/pCloud Drive/Crypto Folder/Library"))
 
 ;; Org - Ref Configs
-(setq reftex-default-bibliography '("~/OneDrive/Dokumenti/Library/Library.bib"))
-(setq org-ref-default-bibliography '("~/OneDrive/Dokumenti/Library/Library.bib")
-      org-ref-pdf-directory "~/OneDrive/Dokumenti/Library/")
+(setq reftex-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib"))
+(setq org-ref-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib")
+      org-ref-pdf-directory "~/pCloud Drive/Crypto Folder/Library/")
