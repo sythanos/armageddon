@@ -18,6 +18,7 @@
 
 (defconst FinancesFolder
   (concat BrainFolder "/Finances") "The Path to my Finnancial recoreds folder")
+
 (defconst AttachmentsFolder
   (concat NotesFolder "/Attachments") "The Path to the attachments folder for my notes")
 
@@ -44,20 +45,15 @@
            :file-name "Tasks/%<%Y%m%d%H%M%S>-${slug}"
            :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n"
            :unnarrowed t)
-          ("W" "Wiki" plain (function org-roam--capture-get-point)
+          ("N" "Note" plain (function org-roam--capture-get-point)
            "%?"
-           :file-name "Wiki/%<%Y%m%d%H%M%S>-${slug}"
-           :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall"
+           :file-name "Notes/%<%Y%m%d%H%M%S>-${slug}"
+           :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall\n"
            :unnarrowed t)
-          ("Z" "Zettel" plain (function org-roam--capture-get-point)
+          ("S" "Source Note" plain (function org-roam--capture-get-point)
            "%?"
-           :file-name "Zettel/%<%Y%m%d%H%M%S>-${slug}"
-           :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall"
-           :unnarrowed t)
-          ("L" "Literature" plain (function org-roam--capture-get-point)
-           "%?"
-           :file-name "LiteratureNote/%<%Y%m%d%H%M%S>-${slug}"
-           :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall"
+           :file-name "Notes/Sources/%<%Y%m%d%H%M%S>-${slug}"
+           :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall\n"
            :unnarrowed t))))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
