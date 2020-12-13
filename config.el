@@ -7,7 +7,21 @@
   (map! :n "j" 'evil-next-visual-line
         :n "k" 'evil-previous-visual-line))
 
-(setq org-directory "~/pCloud Drive/Crypto Folder/Brain")
+(defconst BrainFolder
+  "/Volumes/Brain" "The Path to the root of brain folder")
+
+(defconst NotesFolder
+  (concat BrainFolder "/Notes") "The Path to the notes folder")
+
+(defconst TasksFolder
+  (concat BrainFolder "/Tasks") "The Path to the tasks folder")
+
+(defconst FinancesFolder
+  (concat BrainFolder "/Finances") "The Path to my Finnancial recoreds folder")
+(defconst AttachmentsFolder
+  (concat NotesFolder "/Attachments") "The Path to the attachments folder for my notes")
+
+(setq org-directory BrainFolder)
 
 (after! org
   (setq org-startup-with-inline-images t)
@@ -15,11 +29,11 @@
     '(org-document-title :height 1.4)))
 
 (after! org
-  (setq org-agenda-files '("~/pCloud Drive/Crypto Folder/Brain/Tasks"))
+  (setq org-agenda-files '(TasksFolder))
   (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "LEARN(l)" "DOING" "|" "DONE(d)" "CANCELLED(c)")))
   )
 
-(setq org-roam-directory "~/pCloud Drive/Crypto Folder/Brain")
+(setq org-roam-directory BrainFolder)
 (setq org-roam-db-locaiton "~/org-roam.db")
 (setq org-roam-tag-sources '(prop first-directory))
 
@@ -46,23 +60,6 @@
            :head "#+TITLE: ${title}\n#+CREATED: %<%Y-%m-%d %H:%M:%S>\n#+STARTUP: latexpreview showall"
            :unnarrowed t))))
 
-(after! lsp-mode
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-tramp-connection "rust-analyzer")
-                    :major-modes '(rust-mode rustic-mode)
-                    :priority 1
-                    :initialization-options 'lsp-rust-analyzer--make-init-options
-                    :notification-handlers (ht<-alist lsp-rust-notification-handlers) //TODO Unknwon Constant
-                    :action-handlers (ht ("rust-analyzer.runSingle" #'lsp-rust--analyzer-run-single))
-                    :library-folders-fn(lambda (_workplace) lsp-rust-library-directions)
-                    :after-open-fn (lambda ()
-                                     (when lsp-rust-analyzer-server-display-hints
-                                       (lsp-rust-analyzer-inlay-hints-mode)))
-                    :ignore-messages nil
-                    :remote? t
-                    :custom-capabilities `((experimental . ((snippetTextEdit . ,lsp-enable-snipet ))))
-                    :server-id 'rust-analyzer-remote)))
-
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
@@ -86,14 +83,14 @@
 ;; they are implemented.
 
 ;; Org - Attach Settings
-(setq org-attach-id-dir "~/pCloud Drive/Crypto Folder/Brain/Attachments")
+(setq org-attach-id-dir AttachmentsFolder)
 
 (use-package org-download
   :after org
   :defer nil
   :custom
   (org-download-method 'directory)
-  (org-download-imge-dir "~/pCloud Drive/Crypto Fodler/Brain/Attachments")
+  (org-download-imge-dir AttachmentsFolder)
   (org-download-screenshot-method "fireshot gui --raw > %s")
   :config
   (require 'org-download))
@@ -133,9 +130,9 @@
 
 
 ;; Org - Noter Configs
-(setq org-noter-notes-search-path '("~/pCloud Drive/Crypto Folder/Library"))
+;; (setq org-noter-notes-search-path '("~/pCloud Drive/Crypto Folder/Library"))
 
 ;; Org - Ref Configs
-(setq reftex-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib"))
-(setq org-ref-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib")
-      org-ref-pdf-directory "~/pCloud Drive/Crypto Folder/Library/")
+;; (setq reftex-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib"))
+;; (setq org-ref-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib")
+;;       org-ref-pdf-directory "~/pCloud Drive/Crypto Folder/Library/")

@@ -38,9 +38,27 @@ To enalbe to move in visual lines using `j` and `k` and not skip lines.
 ** ORG MODE
 Org Mode Configurations
 
+Define some paths to folders used in my org config. I acually use ~Cryptomator~ to encrypt my org and ledger files before uploading them to the cloud. The decrypted volumes are mounted into the ~$HOME/Decrypted~ folder. 
+#+BEGIN_SRC emacs-lisp
+(defconst BrainFolder
+  "/Volumes/Brain" "The Path to the root of brain folder")
+
+(defconst NotesFolder
+  (concat BrainFolder "/Notes") "The Path to the notes folder")
+
+(defconst TasksFolder
+  (concat BrainFolder "/Tasks") "The Path to the tasks folder")
+
+(defconst FinancesFolder
+  (concat BrainFolder "/Finances") "The Path to my Finnancial recoreds folder")
+
+(defconst AttachmentsFolder
+  (concat NotesFolder "/Attachments") "The Path to the attachments folder for my notes")
+#+END_SRC
+
 Make my default =org-directory= equal to the /Brain/ folder in my cloud for cross device support. This must eval before /org/ loads. 
 #+BEGIN_SRC emacs-lisp
-(setq org-directory "~/pCloud Drive/Crypto Folder/Brain")
+(setq org-directory BrainFolder)
 #+END_SRC
 
 The title in my config should be 40% slightly larger and inline images should always load. 
@@ -56,7 +74,7 @@ Set =org-agenda-files= variable to my /Tasks/ folder inside the /Brain/ folder, 
 + =BLOCKED= An external block
 #+BEGIN_SRC emacs-lisp
 (after! org
-  (setq org-agenda-files '("~/pCloud Drive/Crypto Folder/Brain/Tasks"))
+  (setq org-agenda-files '(TasksFolder))
   (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "LEARN(l)" "DOING" "|" "DONE(d)" "CANCELLED(c)")))
   )
 #+END_SRC
@@ -69,7 +87,7 @@ Set =org-agenda-files= variable to my /Tasks/ folder inside the /Brain/ folder, 
 =Org Roam= is used to control my digital brain. The brain is located in my Crypto Folder, but the DB lives outside to allow sharing of the documents accross multiple devices. When switching =org-roam-build-cache= should be called to regenreate the Database.
 
 #+BEGIN_SRC emacs-lisp
-(setq org-roam-directory "~/pCloud Drive/Crypto Folder/Brain")
+(setq org-roam-directory BrainFolder)
 (setq org-roam-db-locaiton "~/org-roam.db")
 (setq org-roam-tag-sources '(prop first-directory))
 #+END_SRC
@@ -107,25 +125,6 @@ There are 3 Core Templates in my Roam:
 
 ** LANG
 *** RUST
-Enables Rust over TRAMP
-#+BEGIN_SRC emacs-lisp
-(after! lsp-mode
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-tramp-connection "rust-analyzer")
-                    :major-modes '(rust-mode rustic-mode)
-                    :priority 1
-                    :initialization-options 'lsp-rust-analyzer--make-init-options
-                    :notification-handlers (ht<-alist lsp-rust-notification-handlers) //TODO Unknwon Constant
-                    :action-handlers (ht ("rust-analyzer.runSingle" #'lsp-rust--analyzer-run-single))
-                    :library-folders-fn(lambda (_workplace) lsp-rust-library-directions)
-                    :after-open-fn (lambda ()
-                                     (when lsp-rust-analyzer-server-display-hints
-                                       (lsp-rust-analyzer-inlay-hints-mode)))
-                    :ignore-messages nil
-                    :remote? t
-                    :custom-capabilities `((experimental . ((snippetTextEdit . ,lsp-enable-snipet ))))
-                    :server-id 'rust-analyzer-remote)))
-#+END_SRC
 
 
 ** TEMP
@@ -153,14 +152,14 @@ Enables Rust over TRAMP
 ;; they are implemented.
 
 ;; Org - Attach Settings
-(setq org-attach-id-dir "~/pCloud Drive/Crypto Folder/Brain/Attachments")
+(setq org-attach-id-dir AttachmentsFolder)
 
 (use-package org-download
   :after org
   :defer nil
   :custom
   (org-download-method 'directory)
-  (org-download-imge-dir "~/pCloud Drive/Crypto Fodler/Brain/Attachments")
+  (org-download-imge-dir AttachmentsFolder)
   (org-download-screenshot-method "fireshot gui --raw > %s")
   :config
   (require 'org-download))
@@ -200,11 +199,10 @@ Enables Rust over TRAMP
 
 
 ;; Org - Noter Configs
-(setq org-noter-notes-search-path '("~/pCloud Drive/Crypto Folder/Library"))
+;; (setq org-noter-notes-search-path '("~/pCloud Drive/Crypto Folder/Library"))
 
 ;; Org - Ref Configs
-(setq reftex-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib"))
-(setq org-ref-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib")
-      org-ref-pdf-directory "~/pCloud Drive/Crypto Folder/Library/")
+;; (setq reftex-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib"))
+;; (setq org-ref-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib")
+;;       org-ref-pdf-directory "~/pCloud Drive/Crypto Folder/Library/")
 #+END_SRC
-
