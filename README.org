@@ -75,7 +75,7 @@ Set =org-agenda-files= variable to my /Tasks/ folder inside the /Brain/ folder, 
 #+BEGIN_SRC emacs-lisp
 (after! org
   (setq org-agenda-files '(TasksFolder))
-  (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "LEARN(l)" "DOING" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "IN-PROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")))
   )
 #+END_SRC
 
@@ -118,8 +118,6 @@ There are 3 Core Templates in my Roam:
            :unnarrowed t))))
 #+END_SRC
 
-** LANG
-*** RUST
 
 
 ** TEMP

@@ -31,7 +31,7 @@
 
 (after! org
   (setq org-agenda-files '(TasksFolder))
-  (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "MEETING(m)" "BLOCKED(b)" "LEARN(l)" "DOING" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "IN-PROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")))
   )
 
 (setq org-roam-directory BrainFolder)
