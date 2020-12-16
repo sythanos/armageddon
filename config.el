@@ -32,7 +32,11 @@
 (after! org
   (setq org-agenda-files '(TasksFolder))
   (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "IN-PROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")))
-  )
+  (setq orf-todo-keyword-faces
+        '(("TODO" . (:foreground "#ff39ar" :weight bold))
+          ("NEXT" . "#0492C2")
+          ("WAIT" . "pink")
+          ("IN-PROGRESS" . "#DD571C"))))
 
 (setq org-roam-directory BrainFolder)
 (setq org-roam-db-locaiton "~/org-roam.db")
