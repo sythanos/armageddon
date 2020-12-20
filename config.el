@@ -31,12 +31,14 @@
 
 (after! org
   (setq org-agenda-files '(TasksFolder))
-  (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "IN-PROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")))
-  (setq orf-todo-keyword-faces
+  (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "IN-PROGRESS(i)" "HABBIT(h)" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq org-todo-keyword-faces
         '(("TODO" . (:foreground "#ff39ar" :weight bold))
           ("NEXT" . "#0492C2")
           ("WAIT" . "pink")
-          ("IN-PROGRESS" . "#DD571C"))))
+          ("HABBIT" . (:foreground "red" :weight bold))
+          ("IN-PROGRESS" . "#DD571C")))
+  (setq org-todo-repeat-to-state t))
 
 (setq org-roam-directory BrainFolder)
 (setq org-roam-db-locaiton "~/org-roam.db")
