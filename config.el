@@ -40,6 +40,9 @@
           ("IN-PROGRESS" . "#DD571C")))
   (setq org-todo-repeat-to-state t))
 
+(setq reftex-default-bibliography '("~/OneDrive/Library/MyLibrary.bib"))
+(setq org-ref-default-bibliography '("~/OneDrive/Library/MyLibrary.bib"))
+
 (after! org-roam
   (setq org-roam-directory BrainFolder)
   (setq org-roam-db-location "~/org-roam.db")
@@ -135,8 +138,3 @@
 
 ;; Org - Noter Configs
 ;; (setq org-noter-notes-search-path '("~/pCloud Drive/Crypto Folder/Library"))
-
-;; Org - Ref Configs
-;; (setq reftex-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib"))
-;; (setq org-ref-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib")
-;;       org-ref-pdf-directory "~/pCloud Drive/Crypto Folder/Library/")

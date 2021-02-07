@@ -88,6 +88,13 @@ Set =org-agenda-files= variable to my /Tasks/ folder inside the /Brain/ folder, 
 #+RESULTS:
 | sequence | TODO(t) | PROJ(p) | MEETING(m) | BLOCKED(b) | LEARN(l) | DOING |   |   | DONE(d) | CANCELLED(c) |
 
+*** ORG REF
+The correct use of config for OrgRef
+
+#+begin_src emacs-lisp
+(setq reftex-default-bibliography '("~/OneDrive/Library/MyLibrary.bib"))
+(setq org-ref-default-bibliography '("~/OneDrive/Library/MyLibrary.bib"))
+#+end_src
 
 *** ORG ROAM
 =Org Roam= is used to control my digital brain. The brain is located in my Crypto Folder, but the DB lives outside to allow sharing of the documents accross multiple devices. When switching =org-roam-build-cache= should be called to regenreate the Database.
@@ -202,8 +209,4 @@ There are 3 Core Templates in my Roam:
 ;; Org - Noter Configs
 ;; (setq org-noter-notes-search-path '("~/pCloud Drive/Crypto Folder/Library"))
 
-;; Org - Ref Configs
-;; (setq reftex-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib"))
-;; (setq org-ref-default-bibliography '("~/pCloud Drive/Crypto Folder/Library/Library.bib")
-;;       org-ref-pdf-directory "~/pCloud Drive/Crypto Folder/Library/")
 #+END_SRC
