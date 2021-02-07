@@ -93,9 +93,11 @@ Set =org-agenda-files= variable to my /Tasks/ folder inside the /Brain/ folder, 
 =Org Roam= is used to control my digital brain. The brain is located in my Crypto Folder, but the DB lives outside to allow sharing of the documents accross multiple devices. When switching =org-roam-build-cache= should be called to regenreate the Database.
 
 #+BEGIN_SRC emacs-lisp
-(setq org-roam-directory BrainFolder)
-(setq org-roam-db-locaiton "~/org-roam.db")
-(setq org-roam-tag-sources '(prop first-directory))
+(after! org-roam
+  (setq org-roam-directory BrainFolder)
+  (setq org-roam-db-location "~/org-roam.db")
+  (setq org-roam-tag-sources '(prop first-directory))
+  (setq org-roam-file-exclude-regexp "*.ledger"))
 #+END_SRC
 
 **** Roam Templates

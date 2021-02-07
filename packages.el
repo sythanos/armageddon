@@ -52,7 +52,12 @@
 ;; Org Custom Packages
 ;;
 ;;
-(package! org-roam-server :pin "7af07")
+(package! org-roam
+  :recipe (:host github :repo "org-roam/org-roam")
+  :pin "777f6d2")
+
+(package! org-roam-server
+  :recipe (:host github :repo "org-roam/org-roam-server"))
 
 (package! org-ref
   :recipe (:host github :repo "jkitchin/org-ref"))

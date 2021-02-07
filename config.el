@@ -40,9 +40,11 @@
           ("IN-PROGRESS" . "#DD571C")))
   (setq org-todo-repeat-to-state t))
 
-(setq org-roam-directory BrainFolder)
-(setq org-roam-db-locaiton "~/org-roam.db")
-(setq org-roam-tag-sources '(prop first-directory))
+(after! org-roam
+  (setq org-roam-directory BrainFolder)
+  (setq org-roam-db-location "~/org-roam.db")
+  (setq org-roam-tag-sources '(prop first-directory))
+  (setq org-roam-file-exclude-regexp "*.ledger"))
 
 (after! org
   (setq org-roam-capture-templates
