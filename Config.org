@@ -1,0 +1,39 @@
+#+TITLE: Armagedon Config
+#+PROPERTY: header-args :tangle config.el
+
+* Introduction
+Welcome!
+This is peronal (doom) emacs config by Urban Avsec. In chance you stumbled on this
+config before the end of the world, plese feel free to re-use this armagedon config
+as you would like.
+
+** Commit the update
+After changing this file, don't forget to commit.
+1. Refresh the buffer with: ~C-C C-C~
+2. Tangle the file with:    ~C-c C-v t~
+
+
+* Who am I?
+Some functionality uses this to identify you, e.g. GPG configuration, email
+clients, file templates and snippets.
+
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Urban Avsec"
+      user-mail-address "urban.avsec@outlook.com")
+#+END_SRC
+
+* Emacs Style - Let's make emacs pretty (or at least not ugly)
+** General Theme
+To load a theme provided by doom use ~doom-theme~ directive. If a custom theme has been
+installed, I might need to load it using ~load-theme~.
+
+#+BEGIN_SRC emacs-lisp
+(setq doom-theme 'doom-city-lights)
+#+END_SRC
+
+** Line Numbers
+I like to see the relative line numbers. It also eases with jumping.
+#+BEGIN_SRC emacs-lisp
+(setq display-line-numbers-type 'relative)
+#+END_SRC
+

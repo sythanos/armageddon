@@ -1,0 +1,9 @@
+#+TITLE: Urban's Armagedon config
+#+AUTHOR: Urban Avsec
+
+Welcome to the imending doom! 
+
+Or at least to my config for doom. This is ~Armagedon Config~. Please refer to bottom pages for detailed configuraiton.
+
+* Configurations
+- [[./Config.org][General Config]]
