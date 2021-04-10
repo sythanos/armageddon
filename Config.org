@@ -37,3 +37,9 @@ I like to see the relative line numbers. It also eases with jumping.
 (setq display-line-numbers-type 'relative)
 #+END_SRC
 
+* Org - My life organized
+** Org Roam
+#+BEGIN_SRC emacs-lisp
+(after! org-roam
+  (setq org-roam-directory "~/iCloud/3. MyBrain"))
+#+END_SRC

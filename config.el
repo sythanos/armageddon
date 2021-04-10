@@ -4,3 +4,6 @@
 (setq doom-theme 'doom-city-lights)
 
 (setq display-line-numbers-type 'relative)
+
+(after! org-roam
+  (setq org-roam-directory "~/iCloud/3. MyBrain"))
