@@ -22,6 +22,11 @@
 
 (use-package! org-roam
     :after org
+    :init
+    (map! :leader
+          (:prefix-map ("n" . "notes")
+           (:prefix ("r" . "roam")
+            :desc "Find Roam Node"                      "/" #'org-roam-node-find)))
     :commands
     (org-roam-buffer
      org-roam-setup
@@ -30,6 +35,17 @@
     :config
     (setq org-roam-directory "~/iCloud/3. MyBrain")
     (org-roam-setup))
+
+(after! org-roam
+  (setq org-roam-capture-templates
+        '(("n" "Default Note" plain "%?"
+           :if-new (file+head "%<%Y&m&d&H&M&S>-${slug}.org"
+                              "#+TITLE: ${title}\n")
+           :unnarrowed t)
+          ("s" "Source Note" plain "%s?"
+           :if-new (file+head "LiteratureNotes/${citekey.org}"
+                              "#+TITLE: ${title}\n"
+                              "#+ROAM_KEY: ${citekey.org}")))))
 
 (use-package! org-roam-bibtex
   :after org-roam
