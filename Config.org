@@ -38,8 +38,46 @@ I like to see the relative line numbers. It also eases with jumping.
 #+END_SRC
 
 * Org - My life organized
-** Org Roam
+** General Org
 #+BEGIN_SRC emacs-lisp
-(after! org-roam
-  (setq org-roam-directory "~/iCloud/3. MyBrain"))
+(setq org-directory "~/iCloud/3. MyBrain")
+#+END_SRC
+
+** Org Ref
+#+BEGIN_SRC emacs-lisp
+(use-package! org-ref
+  :config
+  (setq
+   org-ref-completion-library 'org-ref-ivy-cite
+   org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-help-bibtex
+   org-ref-default-bibliography (list "~/iCloud/Library/Library.bib")))
+
+(after! org-ref
+  (setq
+   bibtex-completion-notes-path "~/iCloud/3. MyBrain/SourceNotes/"
+   bibtex-completion-bibliography "~/iCLoud/Library/Library.bib"
+   bibtex-completion-pdf-field "file"))
+#+END_SRC
+
+** Org Roam
+Org Roam is my knowledge system and repository. It lives in my iCloud.
+#+BEGIN_SRC emacs-lisp
+(use-package! org-roam
+    :after org
+    :commands
+    (org-roam-buffer
+     org-roam-setup
+     org-roam-capture
+     org-roam-node-find)
+    :config
+    (setq org-roam-directory "~/iCloud/3. MyBrain")
+    (org-roam-setup))
+#+END_SRC
+
+** Org Roam Bibtex
+#+BEGIN_SRC emacs-lisp
+(use-package! org-roam-bibtex
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :config)
 #+END_SRC
