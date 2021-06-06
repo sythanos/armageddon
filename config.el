@@ -5,6 +5,10 @@
 
 (setq display-line-numbers-type 'relative)
 
+(after! evil
+  (map! :n "j" 'evil-next-visual-line
+        :n "k" 'evil-previous-visual-line))
+
 (setq org-directory "~/iCloud/3. MyBrain")
 
 (use-package! org-ref
@@ -39,13 +43,13 @@
 (after! org-roam
   (setq org-roam-capture-templates
         '(("n" "Default Note" plain "%?"
-           :if-new (file+head "%<%Y&m&d&H&M&S>-${slug}.org"
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
                               "#+TITLE: ${title}\n")
            :unnarrowed t)
-          ("s" "Source Note" plain "%s?"
-           :if-new (file+head "LiteratureNotes/${citekey.org}"
-                              "#+TITLE: ${title}\n"
-                              "#+ROAM_KEY: ${citekey.org}")))))
+          ("s" "Source Note" plain "%?"
+           :if-new (file+head "LiteratureNotes/${citekey}.org"
+                              "#+TITLE: ${title}\n")
+           :unnarrowed t))))
 
 (use-package! org-roam-bibtex
   :after org-roam

@@ -37,6 +37,14 @@ I like to see the relative line numbers. It also eases with jumping.
 (setq display-line-numbers-type 'relative)
 #+END_SRC
 
+* Sane Editiong Controls
+Use visual lines to move up and down instead of actual lines.
+#+begin_src emacs-lisp
+(after! evil
+  (map! :n "j" 'evil-next-visual-line
+        :n "k" 'evil-previous-visual-line))
+#+end_src
+
 * Org - My life organized
 ** General Org
 #+BEGIN_SRC emacs-lisp
@@ -81,13 +89,13 @@ Org Roam is my knowledge system and repository. It lives in my iCloud.
 (after! org-roam
   (setq org-roam-capture-templates
         '(("n" "Default Note" plain "%?"
-           :if-new (file+head "%<%Y&m&d&H&M&S>-${slug}.org"
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
                               "#+TITLE: ${title}\n")
            :unnarrowed t)
-          ("s" "Source Note" plain "%s?"
-           :if-new (file+head "LiteratureNotes/${citekey.org}"
-                              "#+TITLE: ${title}\n"
-                              "#+ROAM_KEY: ${citekey.org}")))))
+          ("s" "Source Note" plain "%?"
+           :if-new (file+head "LiteratureNotes/${citekey}.org"
+                              "#+TITLE: ${title}\n")
+           :unnarrowed t))))
 #+END_SRC
 
 ** Org Roam Bibtex
