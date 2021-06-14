@@ -30,14 +30,19 @@
     (map! :leader
           (:prefix-map ("n" . "notes")
            (:prefix ("r" . "roam")
-            :desc "Find Roam Node"                      "/" #'org-roam-node-find)))
+            :desc "Find Roam Node"                      "/" #'org-roam-node-find
+            :desc "Insert the Roam Link"                "i" #'org-roam-node-insert
+            :desc "Sync Org Roam DB"                    "s" #'org-roam-db-sync
+            :desc "Toggle Org Roam buffer"              "t" #'org-roam-buffer-toggle)))
     :commands
     (org-roam-buffer
      org-roam-setup
      org-roam-capture
      org-roam-node-find)
     :config
-    (setq org-roam-directory "~/iCloud/3. MyBrain")
+    (setq
+     org-roam-directory "~/iCloud/3. MyBrain"
+     org-roam-dailies-directory "~/iCloud/3. MyBrain/Dailies")
     (org-roam-setup))
 
 (after! org-roam
@@ -49,7 +54,11 @@
           ("s" "Source Note" plain "%?"
            :if-new (file+head "LiteratureNotes/${citekey}.org"
                               "#+TITLE: ${title}\n")
-           :unnarrowed t))))
+           :unnarrowed t))
+        org-roam-dailies-capture-templates
+        '(("j" "Journal" plain "%?"
+           :if-new (file+head "Dailies/%<%Y%m%d>.org"
+                              "#+TITLE: ${title}\n")))))
 
 (use-package! org-roam-bibtex
   :after org-roam
