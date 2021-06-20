@@ -49,6 +49,11 @@ Use visual lines to move up and down instead of actual lines.
 ** General Org
 #+BEGIN_SRC emacs-lisp
 (setq org-directory "~/iCloud/3. MyBrain")
+
+(after! org
+  (setq org-startup-with-inline-images t)
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "LEARN(l)" "|" "DONE(d!)" "CANCEL(c@)"))))
 #+END_SRC
 
 ** Org Ref

@@ -11,6 +11,11 @@
 
 (setq org-directory "~/iCloud/3. MyBrain")
 
+(after! org
+  (setq org-startup-with-inline-images t)
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "LEARN(l)" "|" "DONE(d!)" "CANCEL(c@)"))))
+
 (use-package! org-ref
   :config
   (setq
