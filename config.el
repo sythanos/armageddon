@@ -1,7 +1,7 @@
 (setq user-full-name "Urban Avsec"
       user-mail-address "urban.avsec@outlook.com")
 
-(setq doom-theme 'doom-city-lights)
+(setq doom-theme 'doom-gruvbox-light)
 
 (setq display-line-numbers-type 'relative)
 
@@ -39,11 +39,10 @@
             :desc "Insert the Roam Link"                "i" #'org-roam-node-insert
             :desc "Sync Org Roam DB"                    "s" #'org-roam-db-sync
             :desc "Toggle Org Roam buffer"              "t" #'org-roam-buffer-toggle)))
-    :commands
-    (org-roam-buffer
-     org-roam-setup
-     org-roam-capture
-     org-roam-node-find)
+
+    ;; Sets the Ack so that warning is not issued
+    (setq org-roam-v2-ack t)
+
     :config
     (setq
      org-roam-directory "~/iCloud/3. MyBrain"
@@ -59,11 +58,7 @@
           ("s" "Source Note" plain "%?"
            :if-new (file+head "LiteratureNotes/${citekey}.org"
                               "#+TITLE: ${title}\n")
-           :unnarrowed t))
-        org-roam-dailies-capture-templates
-        '(("j" "Journal" plain "%?"
-           :if-new (file+head "Dailies/%<%Y%m%d>.org"
-                              "#+TITLE: ${title}\n")))))
+           :unnarrowed t))))
 
 (use-package! org-roam-bibtex
   :after org-roam

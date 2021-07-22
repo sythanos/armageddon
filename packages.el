@@ -54,7 +54,7 @@
   :recipe (:local-repo "third_party/protobuf-mode"))
 
 (package! org-roam
-  :recipe (:host github :repo "org-roam/org-roam" :branch "v2"))
+  :recipe (:host github :repo "org-roam/org-roam" :branch "v2.0.0"))
 
 (package! org-roam-bibtex
-  :recipe (:host github :repo "org-roam/org-roam-bibtex" :branch "org-roam-v2"))
+  :recipe (:host github :repo "org-roam/org-roam-bibtex" :branch "v0.6.0"))

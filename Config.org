@@ -28,7 +28,7 @@ To load a theme provided by doom use ~doom-theme~ directive. If a custom theme h
 installed, I might need to load it using ~load-theme~.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-city-lights)
+(setq doom-theme 'doom-gruvbox-light)
 #+END_SRC
 
 ** Line Numbers
@@ -85,11 +85,10 @@ Org Roam is my knowledge system and repository. It lives in my iCloud.
             :desc "Insert the Roam Link"                "i" #'org-roam-node-insert
             :desc "Sync Org Roam DB"                    "s" #'org-roam-db-sync
             :desc "Toggle Org Roam buffer"              "t" #'org-roam-buffer-toggle)))
-    :commands
-    (org-roam-buffer
-     org-roam-setup
-     org-roam-capture
-     org-roam-node-find)
+
+    ;; Sets the Ack so that warning is not issued
+    (setq org-roam-v2-ack t)
+
     :config
     (setq
      org-roam-directory "~/iCloud/3. MyBrain"
@@ -105,11 +104,7 @@ Org Roam is my knowledge system and repository. It lives in my iCloud.
           ("s" "Source Note" plain "%?"
            :if-new (file+head "LiteratureNotes/${citekey}.org"
                               "#+TITLE: ${title}\n")
-           :unnarrowed t))
-        org-roam-dailies-capture-templates
-        '(("j" "Journal" plain "%?"
-           :if-new (file+head "Dailies/%<%Y%m%d>.org"
-                              "#+TITLE: ${title}\n")))))
+           :unnarrowed t))))
 #+END_SRC
 
 ** Org Roam Bibtex
